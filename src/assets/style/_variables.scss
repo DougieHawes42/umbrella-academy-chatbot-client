@@ -1,0 +1,21 @@
+// variables for lightmode avoiding complete black and white
+$light-bg-colour: #f8f8f8;
+$light-text-colour: #1a1a1a;
+$light-accent-colour: #e0e0e0;
+$light-border-colour: #dcdcdc;
+$light-blue-accent-colour: #007ba7;
+
+// variables for darkmode avoiding complete black and white
+$dark-bg-colour: #1a1a1a;
+$dark-text-colour: #f8f8f8;
+$dark-accent-colour: #333333;
+$dark-border-colour: #4d4d4d;
+$dark-blue-accent-colour: #007fff;
+
+// fonts
+$font-family-primary: "Arial", sans-serif;
+$font-family-secondary: "Verdana", sans-serif;
+$font-size-primary: 42px;
+$font-size-secondary: 14px;
+$font-weight-primary: 600;
+$font-weight-secondary: 400;

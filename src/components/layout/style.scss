@@ -1,0 +1,175 @@
+@import "../../assets/style/variables.scss";
+
+// character grid styles
+.character-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 7px;
+  max-width: 600px;
+  width: 100%;
+  .character-grid-title {
+    font-family: $font-family-primary;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .row {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .character {
+    cursor: pointer;
+    aspect-ratio: 1 / 1;
+    flex: 1;
+    width: 20%;
+    background-color: inherit;
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+.app-lightmode .character {
+  border: 6px solid $light-bg-colour;
+}
+.app-lightmode .character-selected {
+  border: 6px solid $light-blue-accent-colour;
+}
+.app-darkmode .character {
+  border: 6px solid $dark-bg-colour;
+}
+.app-darkmode .character-selected {
+  border: 6px solid $dark-blue-accent-colour;
+}
+
+// Chat board styles
+.chat-board {
+  height: 280px;
+  padding: 1rem;
+  margin: 1rem 7px;
+  max-width: 600px;
+  width: 100%;
+}
+.app-lightmode .chat-board {
+  background-color: $light-bg-colour;
+  color: $light-bg-colour;
+  border: 2px solid $light-blue-accent-colour;
+}
+.app-darkmode .chat-board {
+  background-color: $dark-bg-colour;
+  color: $dark-text-colour;
+  border: 2px solid $dark-blue-accent-colour;
+}
+.chat-input {
+  margin: 7px;
+  max-width: 600px;
+  width: 100%;
+  input {
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    outline: none;
+    background-color: inherit;
+    color: inherit;
+  }
+}
+.app-lightmode .chat-input {
+  background-color: $light-bg-colour;
+  color: $light-text-colour;
+  border: 2px solid $light-blue-accent-colour;
+}
+.app-darkmode .chat-input {
+  background-color: $dark-bg-colour;
+  color: $dark-text-colour;
+  border: 2px solid $dark-blue-accent-colour;
+}
+
+// Choose Avatar styles to be top left opposing the darkmode toggle button
+.choose-avatar {
+  cursor: pointer;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  .choose-avatar-image {
+    display: block;
+    width: 50px;
+    height: 50px;
+  }
+  .choose-avatar-title {
+    font-family: $font-family-secondary;
+    font-size: 1.5rem;
+    max-width: 60px;
+    opacity: 0;
+
+    transition: opacity 0.3s ease-in-out;
+  }
+  &:hover {
+    .choose-avatar-title {
+      opacity: 1;
+    }
+  }
+}
+.app-lightmode {
+  .choose-avatar-title {
+    color: $light-blue-accent-colour;
+  }
+  .choose-avatar-image {
+    border: 2px solid $light-blue-accent-colour;
+  }
+}
+.app-darkmode {
+  .choose-avatar-title {
+    color: $dark-blue-accent-colour;
+  }
+  .choose-avatar-image {
+    border: 2px solid $dark-blue-accent-colour;
+  }
+}
+
+// Darkmode toggle button styles
+.darkmode-toggle-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: fixed;
+  top: 0.5rem;
+  right: 7px;
+  * {
+    font-size: 4.2rem;
+  }
+}
+.app-lightmode .darkmode-toggle-button {
+  * {
+    color: $light-text-colour;
+  }
+}
+.app-darkmode .darkmode-toggle-button {
+  * {
+    color: $dark-text-colour;
+  }
+}
+
+// Submit button styles
+.submit-button {
+  font-size: 22px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  margin: 7px;
+  max-width: 600px;
+  text-transform: uppercase;
+  width: 100%;
+}
+.app-lightmode .submit-button {
+  background-color: $light-blue-accent-colour;
+  border: 2px solid $light-blue-accent-colour;
+  color: $light-bg-colour;
+}
+.app-darkmode .submit-button {
+  background-color: $dark-blue-accent-colour;
+  border: 2px solid $dark-blue-accent-colour;
+  color: $dark-bg-colour;
+}
