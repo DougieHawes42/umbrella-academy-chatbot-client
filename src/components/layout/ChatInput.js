@@ -1,10 +1,10 @@
 // style imports
 import "./style.scss";
 
-const ChatInput = () => {
+const ChatInput = ({ placeholder }) => {
   return (
     <div className="chat-input">
-      <input type="text" placeholder="Type a message..." />
+      <input type="text" placeholder={placeholder} />
     </div>
   );
 };
