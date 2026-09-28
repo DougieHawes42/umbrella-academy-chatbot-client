@@ -1,10 +1,14 @@
-// style imports
 import "./style.scss";
 
-const ChatInput = ({ placeholder }) => {
+const ChatInput = ({ placeholder, value, onChange }) => {
   return (
     <div className="chat-input">
-      <input type="text" placeholder={placeholder} />
+      <input
+        type="text"
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+      />
     </div>
   );
 };

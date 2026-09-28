@@ -3,12 +3,10 @@ import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 // style imports
 import "./style.scss";
 
-const DarkmodeToggle = ({ isDarkMode, setIsDarkMode }) => {
+const DarkmodeToggle = ({ darkMode, setIsDarkMode }) => {
   return (
-    <div
-      className="darkmode-toggle-button"
-      onClick={() => setIsDarkMode(!isDarkMode)}>
-      {isDarkMode ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
+    <div className="darkmode-toggle-button" onClick={setIsDarkMode}>
+      {darkMode ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
     </div>
   );
 };

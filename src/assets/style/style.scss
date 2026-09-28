@@ -43,6 +43,9 @@
 
   color: $light-text-colour;
   border: 1px solid $light-border-colour;
+  input {
+    color: $light-text-colour;
+  }
   .chat-dashboard {
     .app-header {
       .app-header-icon {
@@ -56,6 +59,9 @@
 
   color: $dark-text-colour;
   border: 1px solid $dark-border-colour;
+  input {
+    color: $dark-text-colour;
+  }
   .chat-dashboard {
     .app-header {
       .app-header-icon {

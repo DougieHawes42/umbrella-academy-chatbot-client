@@ -31,7 +31,7 @@ export const submitButtonTexts = [
   "What could go wrong?",
 ];
 
-export const placeholders = [
+export const chatInputPlaceholders = [
   "Say something...",
   "Go on...",
   "What's up?",

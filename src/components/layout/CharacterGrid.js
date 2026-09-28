@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { setSelectedCharacter } from "../../redux/characterSlice.js";
 
 // style imports
 import "./style.scss";
@@ -6,7 +8,11 @@ import "./style.scss";
 import { characters } from "../../assets/text/characterData.js";
 
 const CharacterGrid = () => {
-  const [characterSelected, setCharacterSelected] = useState(1);
+  const dispatch = useDispatch();
+
+  const selectedCharacter = useSelector(
+    (state) => state.character.selectedCharacter,
+  );
 
   return (
     <div className="character-grid">
@@ -15,10 +21,10 @@ const CharacterGrid = () => {
         {characters.slice(0, 4).map((character) => (
           <div
             key={character.id}
-            className={`character ${characterSelected === character.id ? "character-selected" : ""}`}
-            onClick={() => setCharacterSelected(character.id)}>
+            className={`character ${selectedCharacter === character.id ? "character-selected" : ""}`}
+            onClick={() => dispatch(setSelectedCharacter(character.id))}>
             <img src={character.image} alt={character.name} />
-            {characterSelected === character.id && (
+            {selectedCharacter === character.id && (
               <p className="character-name">{character.name}</p>
             )}
           </div>
@@ -28,10 +34,10 @@ const CharacterGrid = () => {
         {characters.slice(4, 8).map((character) => (
           <div
             key={character.id}
-            className={`character ${characterSelected === character.id ? "character-selected" : ""}`}
-            onClick={() => setCharacterSelected(character.id)}>
+            className={`character ${selectedCharacter === character.id ? "character-selected" : ""}`}
+            onClick={() => dispatch(setSelectedCharacter(character.id))}>
             <img src={character.image} alt={character.name} />
-            {characterSelected === character.id && (
+            {selectedCharacter === character.id && (
               <p className="character-name">{character.name}</p>
             )}
           </div>

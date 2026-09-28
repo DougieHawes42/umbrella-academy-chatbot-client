@@ -111,6 +111,9 @@
     width: 50px;
     height: 50px;
   }
+  #avatar-upload {
+    display: none;
+  }
   .choose-avatar-title {
     font-family: $font-family-secondary;
     font-size: 1.5rem;
@@ -118,6 +121,13 @@
     opacity: 0;
 
     transition: opacity 0.3s ease-in-out;
+  }
+  .choose-avatar-name {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    outline: none;
+    font-size: 21px;
+    margin-top: 7px;
   }
   &:hover {
     .choose-avatar-title {
