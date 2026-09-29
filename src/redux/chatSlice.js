@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const savedMessages = JSON.parse(localStorage.getItem("messages")) || [];
+const savedMessages = localStorage.getItem("chatMessages");
 
 const initialState = {
   messages: savedMessages ? JSON.parse(savedMessages) : [],
@@ -15,10 +15,11 @@ const chatSlice = createSlice({
 
       localStorage.setItem("chatMessages", JSON.stringify(state.messages));
     },
+
     clearMessages: (state) => {
       state.messages = [];
 
-      localStorage.setItem("messages", JSON.stringify("chatMessages"));
+      localStorage.removeItem("chatMessages");
     },
   },
 });

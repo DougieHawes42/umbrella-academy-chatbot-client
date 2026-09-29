@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { setSelectedAvatar } from "../../redux/avatarSlice.js";
-import { setUserName } from "../../redux/userSlice.js";
+import {
+  setSelectedAvatar,
+  setSelectedUsername,
+} from "../../redux/avatarSlice.js";
 
 import "./style.scss";
 
@@ -9,7 +12,11 @@ const ChooseAvatar = () => {
   const dispatch = useDispatch();
 
   const selectedAvatar = useSelector((state) => state.avatar.selectedAvatar);
-  const userName = useSelector((state) => state.user.name);
+  const selectedUsername = useSelector(
+    (state) => state.avatar.selectedUsername,
+  );
+
+  const [usernameInput, setUsernameInput] = useState(selectedUsername);
 
   const handleAvatarChange = (event) => {
     const file = event.target.files[0];
@@ -25,8 +32,12 @@ const ChooseAvatar = () => {
     reader.readAsDataURL(file);
   };
 
-  const handleNameBlur = (event) => {
-    dispatch(setUserName(event.target.value));
+  const handleNameChange = (event) => {
+    setUsernameInput(event.target.value);
+  };
+
+  const handleNameBlur = () => {
+    dispatch(setSelectedUsername(usernameInput));
   };
 
   return (
@@ -38,19 +49,23 @@ const ChooseAvatar = () => {
           alt="Choose your avatar"
         />
       </label>
+
       <input
         id="avatar-upload"
         type="file"
         accept="image/*"
         onChange={handleAvatarChange}
       />
+
       <input
         className="choose-avatar-name"
         type="text"
-        defaultValue={userName}
+        onChange={handleNameChange}
         onBlur={handleNameBlur}
         placeholder="Enter your name"
+        value={usernameInput}
       />
+
       <h2 className="choose-avatar-title">Choose Your Avatar</h2>
     </div>
   );

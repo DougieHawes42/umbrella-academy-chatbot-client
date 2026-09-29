@@ -1,7 +1,10 @@
+import axios from "axios";
+
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BsUmbrella } from "react-icons/bs";
 
+import { addMessage } from "./redux/chatSlice.js";
 import { toggleDarkMode } from "./redux/themeSlice.js";
 
 // style imports
@@ -21,16 +24,60 @@ const App = () => {
   const dispatch = useDispatch();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [chatInputValue, setChatInputValue] = useState("");
+  const [chatInputValue, setChatInputValue] = useState("testing");
 
+  const userName = useSelector((state) => state.avatar.selectedUsername);
   const darkMode = useSelector((state) => state.theme.darkMode);
+
   const selectedCharacter = useSelector(
     (state) => state.character.selectedCharacter,
   );
 
+  const messages = useSelector((state) => state.chat.messages);
+
   const handleSubmit = async () => {
-    console.log("Submitted message:", chatInputValue);
-    console.log("Selected character:", selectedCharacter);
+    try {
+      setIsSubmitting(true);
+
+      // Keep a copy of the conversation before adding the new message
+      const chatHistory = messages;
+
+      console.log("Chat history:", chatHistory);
+
+      dispatch(
+        addMessage({
+          id: crypto.randomUUID(),
+          role: "user",
+          content: chatInputValue,
+          name: userName,
+          characterId: selectedCharacter,
+        }),
+      );
+
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/chat`,
+        {
+          message: chatInputValue,
+          characterId: selectedCharacter,
+          userName: userName,
+          history: chatHistory,
+        },
+      );
+
+      dispatch(
+        addMessage({
+          id: crypto.randomUUID(),
+          role: "assistant",
+          content: response.data.response,
+          characterId: selectedCharacter,
+        }),
+      );
+    } catch (error) {
+      console.error("Error submitting chat message:", error);
+    } finally {
+      setChatInputValue("");
+      setIsSubmitting(false);
+    }
   };
 
   return (

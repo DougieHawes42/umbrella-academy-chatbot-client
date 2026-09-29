@@ -60,21 +60,44 @@
 
 // Chat board styles
 .chat-board {
-  height: 280px;
+  height: 350px;
   padding: 1rem;
   margin: 1rem 7px;
   max-width: 600px;
+  overflow-y: scroll;
   width: 100%;
+  .chat-message {
+    line-height: 1.2;
+    padding-bottom: 7px;
+    .chat-message-name {
+      font-weight: bold;
+      padding-right: 7px;
+    }
+    .chat-message-name,
+    .chat-message-content {
+      font-size: 21px;
+    }
+  }
 }
 .app-lightmode .chat-board {
   background-color: $light-bg-colour;
-  color: $light-bg-colour;
+  color: $light-text-colour;
   border: 2px solid $light-blue-accent-colour;
+  .chat-message {
+    .chat-message-name {
+      color: $light-blue-accent-colour;
+    }
+  }
 }
 .app-darkmode .chat-board {
   background-color: $dark-bg-colour;
   color: $dark-text-colour;
   border: 2px solid $dark-blue-accent-colour;
+  .chat-message {
+    .chat-message-name {
+      color: $dark-blue-accent-colour;
+    }
+  }
 }
 .chat-input {
   margin: 7px;
