@@ -18,20 +18,7 @@ const CharacterGrid = () => {
     <div className="character-grid">
       <h2 className="character-grid-title">Select Your Character</h2>
       <div className="row">
-        {characters.slice(0, 4).map((character) => (
-          <div
-            key={character.id}
-            className={`character ${selectedCharacter === character.id ? "character-selected" : ""}`}
-            onClick={() => dispatch(setSelectedCharacter(character.id))}>
-            <img src={character.image} alt={character.name} />
-            {selectedCharacter === character.id && (
-              <p className="character-name">{character.name}</p>
-            )}
-          </div>
-        ))}
-      </div>
-      <div className="row">
-        {characters.slice(4, 8).map((character) => (
+        {characters.map((character) => (
           <div
             key={character.id}
             className={`character ${selectedCharacter === character.id ? "character-selected" : ""}`}
