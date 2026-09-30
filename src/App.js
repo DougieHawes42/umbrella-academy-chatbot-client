@@ -82,36 +82,34 @@ const App = () => {
 
   return (
     <div className={`app ${darkMode ? "app-darkmode" : "app-lightmode"}`}>
-      <div className="chat-dashboard">
-        <div className="app-header">
+      <div className="app-header">
+        <ChooseAvatar />
+        <div className="app-header-center">
           <BsUmbrella className="app-header-icon" />
           <h1 className="app-title">UA Chat</h1>
           <BsUmbrella className="app-header-icon" />
         </div>
-
-        <ChooseAvatar />
-
         <DarkmodeToggle
           darkMode={darkMode}
           setIsDarkMode={() => dispatch(toggleDarkMode())}
         />
-
-        <ChatBoard />
-
-        <ChatInput
-          placeholder={
-            chatInputPlaceholders[
-              Math.floor(Math.random() * chatInputPlaceholders.length)
-            ]
-          }
-          value={chatInputValue}
-          onChange={(e) => setChatInputValue(e.target.value)}
-        />
-
-        <SubmitButton onSubmit={handleSubmit} isSubmitting={isSubmitting} />
-
-        <CharacterGrid />
       </div>
+
+      <ChatBoard />
+
+      <ChatInput
+        placeholder={
+          chatInputPlaceholders[
+            Math.floor(Math.random() * chatInputPlaceholders.length)
+          ]
+        }
+        value={chatInputValue}
+        onChange={(e) => setChatInputValue(e.target.value)}
+      />
+
+      <SubmitButton onSubmit={handleSubmit} isSubmitting={isSubmitting} />
+
+      <CharacterGrid />
     </div>
   );
 };

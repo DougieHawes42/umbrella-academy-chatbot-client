@@ -5,8 +5,8 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin: 7px;
-  max-width: 900px;
+  margin: 7px auto;
+  max-width: $max-width;
   width: 100%;
   .character-grid-title {
     font-family: $font-family-primary;
@@ -61,10 +61,10 @@
 
 // Chat board styles
 .chat-board {
-  height: 350px;
-  padding: 1rem;
-  margin: 1rem 7px;
-  max-width: 900px;
+  height: 500px;
+  padding: 7px;
+  margin: 7px auto;
+  max-width: $max-width;
   overflow-y: scroll;
   width: 100%;
   .chat-message {
@@ -110,8 +110,8 @@
   }
 }
 .chat-input {
-  margin: 7px;
-  max-width: 900px;
+  margin: 7px auto;
+  max-width: $max-width;
   width: 100%;
   input {
     font-size: 21px;
@@ -137,9 +137,7 @@
 // Choose Avatar styles to be top left opposing the darkmode toggle button
 .choose-avatar {
   cursor: pointer;
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
+  z-index: 1000;
   .choose-avatar-image {
     display: block;
     width: 80px;
@@ -188,14 +186,12 @@
 
 // Darkmode toggle button styles
 .darkmode-toggle-button {
-  background-color: transparent;
   border: none;
   cursor: pointer;
-  position: fixed;
-  top: 0.5rem;
-  right: 7px;
+  width: 42px;
+  height: 42px;
   * {
-    font-size: 4.2rem;
+    font-size: 42px;
   }
 }
 .app-lightmode .darkmode-toggle-button {
@@ -216,8 +212,9 @@
   cursor: pointer;
   border: none;
   width: 100%;
-  margin: 7px;
-  max-width: 900px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  max-width: $max-width;
   text-transform: uppercase;
   width: 100%;
 }
@@ -232,17 +229,14 @@
   color: $dark-bg-colour;
 }
 
-// media queries if more narrow than an ipad mini
 @media (max-width: 767px) {
   .choose-avatar {
-    top: 0.5rem;
-    left: 0.5rem;
     .choose-avatar-image {
-      width: 80px;
-      height: 80px;
+      width: 70px;
+      height: 70px;
     }
     .choose-avatar-title {
-      font-size: 16px;
+      font-size: 14px;
       max-width: 120px;
     }
   }
@@ -252,10 +246,38 @@
     }
   }
   .chat-board {
-    font-size: 16px;
+    padding: 7px;
+    .chat-message {
+      grid-gap: 7px;
+      margin-bottom: 7px;
+      .chat-message-avatar {
+        width: 42px;
+        height: 42px;
+      }
+      .chat-message-body {
+        .chat-message-name,
+        .chat-message-content {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  .chat-input {
+    input {
+      font-size: 14px;
+    }
   }
   .submit-button {
     font-size: 18px;
-    padding: 0.5rem 0.8rem;
+  }
+  .choose-avatar {
+    .choose-avatar-image {
+      width: 50px;
+      height: 50px;
+    }
+    .choose-avatar-title {
+      font-size: 12px;
+      max-width: 80px;
+    }
   }
 }
