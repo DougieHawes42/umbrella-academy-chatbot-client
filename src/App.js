@@ -24,7 +24,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [chatInputValue, setChatInputValue] = useState("testing");
+  const [chatInputValue, setChatInputValue] = useState("");
 
   const userName = useSelector((state) => state.avatar.selectedUsername);
   const darkMode = useSelector((state) => state.theme.darkMode);
@@ -41,8 +41,6 @@ const App = () => {
 
       // Keep a copy of the conversation before adding the new message
       const chatHistory = messages;
-
-      console.log("Chat history:", chatHistory);
 
       dispatch(
         addMessage({
@@ -95,7 +93,7 @@ const App = () => {
         />
       </div>
 
-      <ChatBoard />
+      <ChatBoard isSubmitting={isSubmitting} />
 
       <ChatInput
         placeholder={
@@ -105,6 +103,7 @@ const App = () => {
         }
         value={chatInputValue}
         onChange={(e) => setChatInputValue(e.target.value)}
+        onSubmit={handleSubmit}
       />
 
       <SubmitButton onSubmit={handleSubmit} isSubmitting={isSubmitting} />

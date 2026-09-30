@@ -1,6 +1,6 @@
 import "./style.scss";
 
-const ChatInput = ({ placeholder, value, onChange }) => {
+const ChatInput = ({ placeholder, value, onChange, onSubmit }) => {
   return (
     <div className="chat-input">
       <input
@@ -8,6 +8,12 @@ const ChatInput = ({ placeholder, value, onChange }) => {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            onSubmit();
+          }
+        }}
       />
     </div>
   );

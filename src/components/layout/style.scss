@@ -109,6 +109,8 @@
     }
   }
 }
+
+// Chat Input
 .chat-input {
   margin: 7px auto;
   max-width: $max-width;
@@ -134,7 +136,7 @@
   border: 2px solid $dark-blue-accent-colour;
 }
 
-// Choose Avatar styles to be top left opposing the darkmode toggle button
+// Choose Avatar
 .choose-avatar {
   cursor: pointer;
   z-index: 1000;

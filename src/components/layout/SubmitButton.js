@@ -13,15 +13,13 @@ const SubmitButton = ({ onSubmit, isSubmitting }) => {
     ];
   };
 
-  const handleClick = async (event) => {
-    setButtonText("responding...");
-
-    setButtonText(getRandomButtonText());
-  };
-
   useEffect(() => {
-    setButtonText(getRandomButtonText());
-  }, []);
+    if (isSubmitting) {
+      setButtonText("responding...");
+    } else {
+      setButtonText(getRandomButtonText());
+    }
+  }, [isSubmitting]);
 
   return (
     <button

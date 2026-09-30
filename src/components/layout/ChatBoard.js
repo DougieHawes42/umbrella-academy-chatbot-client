@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 
 // style imports
@@ -5,7 +6,9 @@ import "./style.scss";
 
 import { characters } from "../../assets/text/characterData.js";
 
-const ChatBoard = () => {
+const ChatBoard = ({ isSubmitting }) => {
+  const chatBoardRef = useRef(null);
+
   const messages = useSelector((state) => state.chat.messages);
 
   const selectedAvatar = useSelector((state) => state.avatar.selectedAvatar);
@@ -14,8 +17,22 @@ const ChatBoard = () => {
     (state) => state.avatar.selectedUsername,
   );
 
+  const selectedCharacter = useSelector(
+    (state) => state.character.selectedCharacter,
+  );
+
+  const selectedCharacterData = characters.find(
+    (character) => character.id === selectedCharacter,
+  );
+
+  useEffect(() => {
+    if (chatBoardRef.current) {
+      chatBoardRef.current.scrollTop = chatBoardRef.current.scrollHeight;
+    }
+  }, [messages]);
+
   return (
-    <div className="chat-board">
+    <div className="chat-board" ref={chatBoardRef}>
       {messages.map((message) => {
         const isUser = message.role === "user";
 
@@ -41,6 +58,25 @@ const ChatBoard = () => {
           </div>
         );
       })}
+      {isSubmitting && selectedCharacterData && (
+        <div className="chat-message chat-message-characer chat-message-laoding">
+          <img
+            src={selectedCharacterData.image}
+            alt={selectedCharacterData.name}
+            className="chat-message-avatar"
+          />
+          <div className="chat-message-body">
+            <div className="chat-message-name">
+              {selectedCharacterData.name}
+            </div>
+            <div className="chat-message-content">
+              {selectedCharacterData.name} is replying<span>.</span>
+              <span>.</span>
+              <span>.</span>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
